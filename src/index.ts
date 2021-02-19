@@ -172,6 +172,12 @@ class VimCell {
         commands.execute('notebook:split-cell-at-cursor');
       });
       lvim.mapCommand('-', 'action', 'splitCell', {}, { extra: 'normal' });
+      lvim.map("H", "0", "normal");
+      lvim.map("L", "$", "normal");
+      lvim.map("H", "0", "visual");
+      lvim.map("L", "$", "visual");
+      lvim.map("K", "<c-b>", "normal");
+      lvim.map("K", "<c-b>", "visual");
     }
   }
 
@@ -475,7 +481,7 @@ function activateCellVim(
     });
     commands.addKeyBinding({
       selector: '.jp-Notebook.jp-mod-editMode',
-      keys: ['Escape'],
+      keys: [';', ';'],
       command: 'leave-insert-mode'
     });
     commands.addKeyBinding({
